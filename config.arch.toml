@@ -1,0 +1,107 @@
+[bootstrap.groups.rin]
+system = true
+
+[bootstrap.users.rin]
+system = true
+group = "rin"
+groups = ["wheel"]
+create_home = true
+comment = "rin is a normal user"
+home = "/home/rin"
+shell = "/usr/bin/bash"
+
+[bootstrap.packages]
+# display manager
+"pacman:greetd" = "latest"
+# bootloader
+"pacman:efibootmgr" = "latest"
+# firmwares and services
+"pacman:sof-firmware" = "latest"
+"pacman:alsa-ucm-conf" = "latest"
+"pacman:alsa-firmware" = "latest"
+"pacman:bluez" = "latest"
+"pacman:pipewire" = "latest"
+"pacman:pipewire-pulse" = "latest"
+"pacman:pipewire-alsa" = "latest"
+"pacman:pipewire-jack" = "latest"
+"pacman:wireplumber" = "latest"
+"pacman:power-profiles-daemon" = "latest"
+# package manager
+"pacman:flatpak" = "latest"
+"pacman:paru" = "latest"
+# man page
+"pacman:tealdeer" = "latest"
+"pacman:man-db" = "latest"
+# cli tools
+"pacman:bash-completion" = "latest"
+"pacman:zoxide" = "latest"
+"pacman:rsync" = "latest"
+"pacman:eza" = "latest"
+"pacman:fzf" = "latest"
+"pacman:bat" = "latest"
+"pacman:fd" = "latest"
+"pacman:ripgrep" = "latest"
+# tui tools
+"pacman:btop" = "latest"
+"pacman:lazygit" = "latest"
+"pacman:yazi" = "latest"
+# clipboard
+"pacman:cliphist" = "latest"
+# browser
+"pacman:helium-browser-bin" = "latest"
+"pacman:firefox" = "latest"
+# music and video
+"pacman:mpv" = "latest"
+"pacman:go-musicfox-git" = "latest"
+# desktop environment
+"pacman:hyprland" = "latest"
+"pacman:niri" = "latest"
+"pacman:noctalia" = "latest"
+# portal
+"pacman:gpu-screen-recorder" = "latest"
+"pacman:grim" = "latest"
+"pacman:slurp" = "latest"
+"pacman:xdg-desktop-portal-gnome" = "latest"
+"pacman:xdg-desktop-portal-hyprland" = "latest"
+# term
+"pacman:foot" = "latest"
+"pacman:kitty" = "latest"
+# editor
+"pacman:neovim" = "latest"
+"pacman:gram" = "latest"
+# input method
+"pacman:fcitx5-im" = "latest"
+"pacman:fcitx5-rime" = "latest"
+"pacman:rime-ice-git" = "latest"
+# fonts
+"pacman:ttf-jetbrains-mono-nerd" = "latest"
+"pacman:ttf-maplemono-nf-cn" = "latest"
+"pacman:noto-fonts-emoji" = "latest"
+# network
+"pacman:ufw" = "latest"
+"pacman:flclash" = "latest"
+# aur
+"aur:flyline" = "latest"
+
+[bootstrap.files."/etc/greetd/config.toml"]
+source = "./greetd/config.toml"
+owner = "root"
+group = "root"
+mode = "0640"
+
+[bootstrap.files."/etc/keyd/default.conf"]
+source = "./keyd/default.conf"
+owner = "root"
+group = "root"
+mode = "0640"
+
+[bootstrap.services]
+# system services
+greetd = {}
+keyd = {}
+bluetooth = {}
+power-profiles-daemon = {}
+# user services
+pipewire = { scope = "user" }
+pipewire-pulse = { scope = "user" }
+wireplumber = { scope = "user" }
